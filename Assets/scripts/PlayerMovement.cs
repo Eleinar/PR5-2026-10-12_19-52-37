@@ -26,9 +26,9 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
+        controller.Move(move.normalized * speed * Time.deltaTime); //важно нормализовать вектор движения, чтобы скорость была одинаковой во всех направлениях
 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        velocity.y += gravity * Time.deltaTime; //Time.deltaTime - это время между кадрами, чтобы гравитация была одинаковой на всех кадрах
+        controller.Move(velocity * Time.deltaTime); //Time.deltaTme - чтобы скорость двжижения была одинаковой на всех кадрах
     }
 }
